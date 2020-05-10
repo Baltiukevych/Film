@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Films - welcome.
+{% endblock %}
+
+{% block content %}
+
+<article>
+    <header>
+        <h1>Welcome</h1>
+        <p>Films is a simple bookmarking site</p>
+    </header>
+    <section>
+        <h2>Recently Added</h2>
+        {% if bookmarks %}
+        <ul>
+           {% for bm in bookmarks %}
+                    <li>{{ bm.user }} added
+                        <a href="{{ bm.url }}" target="_blank">
+                            {% if bm.description %}
+                                {{ bm.description }}
+                            {% else %}
+                                {{ bm.url }}
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+        </ul>
+        {% else %}
+        No bookmarks.
+        {% endif %}
+    </section>
+</article>
+
+{% endblock %}
